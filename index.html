@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List | Register & Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to To-Do List App</h1>
+    <div class="form-container">
+      <div id="register-form" class="form">
+        <h2>Register</h2>
+        <form onsubmit="register(event)">
+          <label for="reg-username">Username</label>
+          <input type="text" id="reg-username" required>
+          
+          <label for="reg-email">Email</label>
+          <input type="email" id="reg-email" required>
+          
+          <label for="reg-password">Password</label>
+          <input type="password" id="reg-password" required>
+          
+          <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <span class="toggle" onclick="showLogin()">Login</span></p>
+      </div>
+
+      <div id="login-form" class="form hidden">
+        <h2>Login</h2>
+        <form onsubmit="login(event)">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" required>
+          
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" required>
+          
+          <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <span class="toggle" onclick="showRegister()">Register</span></p>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

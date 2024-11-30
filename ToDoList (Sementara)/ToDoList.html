@@ -1,0 +1,302 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f4c2c2;
+        }
+        .header {
+            background-color: #ff6f61;
+            height: 50px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .menu-icon {
+            font-size: 24px;
+            color: white;
+        }
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100% - 50px);
+            background-color: #f4c2c2;
+            color: #d3a4a4;
+            font-size: 36px;
+        }
+        .modal {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 700px;
+            max-width: 90%;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .modal h1 {
+            font-size: 24px;
+            margin: 0 0 20px;
+            text-align: center;
+        }
+        .modal .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .modal input[type="text"],
+        .modal select,
+        .modal textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .modal textarea {
+            height: 100px;
+            resize: none;
+        }
+        .modal .date-time {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .modal .date-time label {
+            font-size: 24px;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .modal .date-time input {
+            width: 60px;
+            text-align: center;
+        }
+        .modal .date-time input [type="text"] 
+        {
+            width: 40px;
+        }
+        .modal .date-time .date,
+        .modal .date-time .month {
+            width: 65px;
+        }
+        .modal button {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto 0;
+        }
+        .ToDo{
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+        .tittle{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .tittle h1 {
+            font-size: 18px;
+            margin: 0;
+        }
+        .tittle .icons {
+            display: flex;
+            gap: 10px;
+        }
+        .tittle .icons i {
+            font-size: 18px;
+            color: #888;
+        }
+        .details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .details .type {
+            font-size: 14px;
+            color: #888;
+        }
+        .details .date-time {
+            font-size: 14px;
+            color: #888;
+        }
+        .description {
+            font-size: 14px;
+            color: #888;
+            margin-top: 5px;
+        }
+        .fab {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            position: sticky;
+            left: 10;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .fab-icon {
+            font-size: 24px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-left: 17px;
+            padding-right: 13px;
+            color: #ff6f61;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <i class="fas fa-bars menu-icon"></i>
+    </div>
+    <div class="content">
+        <span class="nothing" style="display: flex;">Nothing here</span>
+        <div class="modal" style="display: none;" >
+            <span class="close">&times;</span>
+            <h1>New</h1>
+            <input id="tittle" name="tittle" type="text" placeholder="Tittle">
+            <div class="date-time">
+                <select class="type" name="type">
+                    <option>Type</option>
+                    <option>Event</option>
+                    <option>Assignment</option>
+                    <option>Movie</option>
+                </select>
+                <label>Start:</label>
+                <select class="date" name="date">
+                    <option>DD</option>
+                    <option>01</option>
+                    <option>02</option>
+                    <option>03</option>
+                    <option>04</option>
+                    <option>05</option>
+                    <option>06</option>
+                    <option>07</option>
+                    <option>08</option>
+                    <option>09</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    <option>17</option>
+                    <option>18</option>
+                    <option>19</option>
+                    <option>20</option>
+                    <option>21</option>
+                    <option>22</option>
+                    <option>23</option>
+                    <option>24</option>
+                    <option>25</option>
+                    <option>26</option>
+                    <option>27</option>
+                    <option>28</option>
+                    <option>29</option>
+                    <option>30</option>
+                    <option>31</option>
+                </select>
+                <select class="month" name="month">
+                    <option>MM</option>
+                    <option>01</option>
+                    <option>02</option>
+                    <option>03</option>
+                    <option>04</option>
+                    <option>05</option>
+                    <option>06</option>
+                    <option>07</option>
+                    <option>08</option>
+                    <option>09</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                </select>
+                <input type="text" placeholder="YYYY">
+                <input type="text" placeholder="00">
+                <span>:</span>
+                <input type="text" placeholder="00">
+            </div>
+            <textarea placeholder="Description"></textarea>
+            <button class="button">Create</button>
+            <script>
+                document.querySelector('.button').addEventListener('click', function() {
+                    document.querySelector('.modal').style.display = 'none';
+                    document.querySelector('.nothing').style.display = 'none';
+                    document.querySelector('.ToDo').style.display = 'block';
+                });
+            </script>
+        </div>
+        <div class="ToDo" style="display: none;">
+            <script>
+                var tittle = document.getElementById('modal').tittle.value;
+                var h1_tittle = document.getElementById('ToDo').otittle;
+                h1_tittle ==  tittle
+            </script>
+            <div class="tittle">
+                <h1 id="otittle"></h1>
+                <div class="icons">
+                    <div class="done">
+                        <i class="fas fa-check-square"></i>
+                    </div>
+                    <i class="fas fa-edit"></i>
+                    <script>
+                        document.querySelector('.done').addEventListener('click', function() {
+                            document.querySelector('.nothing').style.display = 'block';
+                            document.querySelector('.ToDo').style.display = 'none';
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="details">
+                <div class="type">Type</div>
+                <div class="date-time">DD-MM-YY &nbsp; 00 : 00</div>
+            </div>
+            <div class="description">Description</div>
+        </div>
+        <script>
+            document.querySelector('.close').addEventListener('click', function() {
+                document.querySelector('.modal').style.display = 'none';
+                document.querySelector('.nothing').style.display = 'flex';
+            });
+        </script>
+    </div>
+    <div class="fab">
+        <i id class="fas fa-plus fab-icon"></i>
+        <script>
+            document.querySelector('.fab').addEventListener('click', function() {
+                document.querySelector('.modal').style.display = 'block';
+                document.querySelector('.nothing').style.display = 'none';
+            });
+        </script>
+    </div>
+</body>
+</html>
